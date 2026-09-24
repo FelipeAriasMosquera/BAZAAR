@@ -1,0 +1,24 @@
+info:
+  name: Actualizar Categorias
+  type: http
+  seq: 9
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/categorias/3"
+  body:
+    type: json
+    data: '{ "nombre": "Smartphones" }'
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
