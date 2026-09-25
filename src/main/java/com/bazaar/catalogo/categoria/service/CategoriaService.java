@@ -1,4 +1,4 @@
-package com.bazaar.catalogo.categoria;
+package com.bazaar.catalogo.categoria.service;
 
 import com.bazaar.catalogo.categoria.dto.CategoriaArbolResponse;
 import com.bazaar.catalogo.categoria.dto.CategoriaRequest;

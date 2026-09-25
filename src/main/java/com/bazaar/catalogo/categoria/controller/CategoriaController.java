@@ -1,5 +1,6 @@
-package com.bazaar.catalogo.categoria;
+package com.bazaar.catalogo.categoria.controller;
 
+import com.bazaar.catalogo.categoria.service.CategoriaService;
 import com.bazaar.catalogo.categoria.dto.CategoriaArbolResponse;
 import com.bazaar.catalogo.categoria.dto.CategoriaRequest;
 import com.bazaar.catalogo.categoria.dto.CategoriaResponse;

@@ -1,9 +1,12 @@
-package com.bazaar.catalogo.categoria;
+package com.bazaar.catalogo.categoria.service;
 
 
+import com.bazaar.catalogo.categoria.mapper.CategoriaMapper;
 import com.bazaar.catalogo.categoria.dto.CategoriaArbolResponse;
 import com.bazaar.catalogo.categoria.dto.CategoriaRequest;
 import com.bazaar.catalogo.categoria.dto.CategoriaResponse;
+import com.bazaar.catalogo.categoria.entity.Categoria;
+import com.bazaar.catalogo.categoria.repository.CategoriaRepository;
 import com.bazaar.common.exception.BusinessException;
 import com.bazaar.common.exception.ResourceNotFoundException;
 import com.bazaar.common.util.SlugUtil;

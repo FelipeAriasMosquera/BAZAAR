@@ -1,6 +1,7 @@
-package com.bazaar.catalogo.categoria;
+package com.bazaar.catalogo.categoria.mapper;
 
 import com.bazaar.catalogo.categoria.dto.CategoriaResponse;
+import com.bazaar.catalogo.categoria.entity.Categoria;
 
 public final class CategoriaMapper {
 

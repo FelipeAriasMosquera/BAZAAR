@@ -1,5 +1,6 @@
-package com.bazaar.catalogo.categoria;
+package com.bazaar.catalogo.categoria.repository;
 
+import com.bazaar.catalogo.categoria.entity.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;

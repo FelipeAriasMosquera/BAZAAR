@@ -1,4 +1,4 @@
-package com.bazaar.catalogo.categoria;
+package com.bazaar.catalogo.categoria.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
