@@ -1,0 +1,39 @@
+info:
+  name: 1. Crear usuario de prueba
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/usuarios"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "nombre": "Carlos Cepero",
+        "email": "carlos.test@example.com",
+        "password": "secreto123",
+        "telefono": "3001234567"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "const json = res.getBody();\r
+
+        bru.setCollectionVar('usuarioId', json.id);"
+        
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

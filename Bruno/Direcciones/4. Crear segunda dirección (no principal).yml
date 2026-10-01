@@ -1,0 +1,41 @@
+info:
+  name: 4. Crear segunda dirección (no principal)
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/direcciones"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "alias": "Oficina",
+        "calle": "Carrera 30 # 8-15",
+        "ciudad": "Cali",
+        "departamento": "Valle del Cauca",
+        "pais": "Colombia",
+        "codigoPostal": "760001",
+        "esPrincipal": false
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: "http://localhost:8080 "
+  scripts:
+    - type: after-response
+      code: "const json = res.getBody();\r
+
+        bru.setCollectionVar('direccionId2', json.id);"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
