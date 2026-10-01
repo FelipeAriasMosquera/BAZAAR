@@ -1,5 +1,6 @@
 package com.bazaar.usuarios.entity;
 
+import com.bazaar.usuarios.model.Usuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,0 +1,35 @@
+info:
+  name: 7. Actualizar dirección
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/direcciones/{{direccionId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "alias": "Casa (actualizada)",
+        "calle": "Calle 45 # 12-30 Apto 502",
+        "ciudad": "Palmira",
+        "departamento": "Valle del Cauca",
+        "pais": "Colombia",
+        "codigoPostal": "763533"
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: "http://localhost:8080 "
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

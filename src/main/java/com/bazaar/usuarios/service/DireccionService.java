@@ -1,9 +1,9 @@
 package com.bazaar.usuarios.service;
 
-import com.bazaar.common.ResourceNotFoundException;
+import com.bazaar.common.exception.ResourceNotFoundException;
 import com.bazaar.usuarios.dto.DireccionRequest;
 import com.bazaar.usuarios.entity.Direccion;
-import com.bazaar.usuarios.entity.Usuario;
+import com.bazaar.usuarios.model.Usuario;
 import com.bazaar.usuarios.repository.DireccionRepository;
 import com.bazaar.usuarios.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
