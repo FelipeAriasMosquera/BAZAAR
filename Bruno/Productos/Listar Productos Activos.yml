@@ -1,17 +1,17 @@
 info:
-  name: 03. Consultar Usuario JWT
+  name: Listar Productos Activos
   type: http
-  seq: 3
+  seq: 4
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/usuarios/1"
+  url: "{{baseUrl}}/api/productos"
   body:
     type: json
     data: ""
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJFc25laWRlckBiYXphYXIuY29tIiwicm9sIjoiQURNSU4iLCJpYXQiOjE3OTEzMjg1NDMsImV4cCI6MTc5MTQxNDk0M30.PimT5C34bv_nZmUUk36rh-DewxqV1l_lu-pbUY-5T_wrzFbvae6J5IGDGVsUcgwR
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkxMzIyOTc5LCJleHAiOjE3OTE0MDkzNzl9.bzfdJbG5GIU8vIUJPV0nz7yXMZwdficfBP87kxRFJTIwr7GCfD6zXYLGqVHZ2y5c
 
 runtime:
   variables:

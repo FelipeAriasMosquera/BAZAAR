@@ -8,13 +8,11 @@ http:
   url: "{{baseUrl}}/api/usuarios/login"
   body:
     type: json
-    data: "{\r
-
-      \  \"email\": \"Felipiho@bazaar.com\",\r
-
-      \  \"password\": \"12345678\"\r
-
-      }"
+    data: |-
+      {
+        "email": "Esneider@bazaar.com",
+        "password": "123456789"
+      }
   auth: inherit
 
 runtime:

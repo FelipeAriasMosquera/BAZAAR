@@ -1,7 +1,9 @@
 info:
   name: Categorias
   type: folder
-  seq: 1
+  seq: 3
 
 request:
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkxMjQzMTM2LCJleHAiOjE3OTEzMjk1MzZ9.zePuyrnF5WDIcd3mfWxglwUtEGrfo_7FKIK2CY-u52_bvPpkWK4XPk4LhBHPfggN

@@ -1,0 +1,39 @@
+info:
+  name: Crear producto
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/productos"
+  body:
+    type: json
+    data: |-
+      {
+        "vendedorId": 1,
+        "categoriaId": 2,
+        "nombre": "iPhone 14",
+        "descripcion": "",
+        "tipoVenta": "fijo",
+        "precio": 899.99,
+        "stock": 5,
+        "imagenes": [
+          { "url": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRe0i9FQvH3bdRwC62L_bcnPzhHXB5jQUch8TAHtJPViPQLWVY705LgnKpDU8MKO37mn1uxz-08qOguXsk6nw0duambhTnPxLBCEdeNXpUzModr5Bsem9MeMQ", "orden": 0 },
+          { "url": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRTwYlbrN7ke7nMojB01INUt4vxaNUvZwROiwVtufSrDU5VyUsn9BrAK7TtrQCqGozCPxbhf0RPqk0UzZdlmzxOv26uiqg41GvS-lTyw9gtRt0v2SCa_i7c", "orden": 1 }
+        ]
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJDYXJsaXRvc0BiYXphYXIuY29tIiwicm9sIjoiVkVOREVET1IiLCJpYXQiOjE3OTEyNTQ1MjcsImV4cCI6MTc5MTM0MDkyN30.zRDoVtfKiaS0oMqPLqm1EWqhlMu_KUO7XycVaC5VLrtKpxx-0FdZJuekfuZ9OHnD
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
