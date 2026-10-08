@@ -1,0 +1,30 @@
+info:
+  name: 01. Registrar Usuarios
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/usuarios/registro"
+  body:
+    type: json
+    data: |-
+      {
+        "nombre": "Pepe Grillo",
+        "email": "Pepe@bazaar.comm",
+        "password": "123456789",
+        "telefono": "3011234569"
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

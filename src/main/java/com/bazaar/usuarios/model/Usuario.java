@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
@@ -27,8 +29,10 @@ public class Usuario {
     @Column(length = 30)
     private String telefono;
 
-    @Column(nullable = false, length = 20)
-    private Rol rol = Rol.COMPRADOR;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "usuario_id"))
+    @Column(name = "rol")
+    private Set<Rol> roles = new HashSet<>(Set.of(Rol.COMPRADOR));
 
     @Column(nullable = false)
     private Boolean activo = true;
