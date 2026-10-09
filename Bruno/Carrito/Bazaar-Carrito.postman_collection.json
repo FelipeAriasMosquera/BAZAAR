@@ -1,0 +1,103 @@
+{
+  "info": {
+    "name": "Bazaar - Carrito",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "usuarioId", "value": "1", "description": "Pon aquí el id de un usuario existente" },
+    { "key": "productoId", "value": "1", "description": "Pon aquí el id de un producto tipo FIJO, con stock, creado por tu compañero" },
+    { "key": "itemId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Obtener carrito (se crea vacío si no existe)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito"
+      }
+    },
+    {
+      "name": "2. Agregar item al carrito",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const json = pm.response.json();",
+              "if (json.items && json.items.length > 0) {",
+              "    pm.collectionVariables.set('itemId', json.items[0].id);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productoId\": {{productoId}},\n  \"cantidad\": 2\n}"
+        }
+      }
+    },
+    {
+      "name": "3. Agregar el mismo producto otra vez (debe sumar cantidad, no duplicar fila)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productoId\": {{productoId}},\n  \"cantidad\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "4. Ver carrito (debe mostrar cantidad=3, total calculado)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito"
+      }
+    },
+    {
+      "name": "5. Actualizar cantidad de un item",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items/{{itemId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cantidad\": 5\n}"
+        }
+      }
+    },
+    {
+      "name": "6. Error esperado: cantidad mayor al stock disponible",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items/{{itemId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cantidad\": 999999\n}"
+        }
+      }
+    },
+    {
+      "name": "7. Eliminar un item del carrito",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items/{{itemId}}"
+      }
+    },
+    {
+      "name": "8. Vaciar carrito completo",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito"
+      }
+    }
+  ]
+}
