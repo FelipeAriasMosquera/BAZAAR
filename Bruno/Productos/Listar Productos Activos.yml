@@ -1,0 +1,26 @@
+info:
+  name: Listar Productos Activos
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/productos"
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkxMzIyOTc5LCJleHAiOjE3OTE0MDkzNzl9.bzfdJbG5GIU8vIUJPV0nz7yXMZwdficfBP87kxRFJTIwr7GCfD6zXYLGqVHZ2y5c
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

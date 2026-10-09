@@ -1,18 +1,11 @@
 info:
-  name: 02. Login
+  name: Listar Pagina
   type: http
-  seq: 2
+  seq: 6
 
 http:
-  method: POST
-  url: "{{baseUrl}}/api/usuarios/login"
-  body:
-    type: json
-    data: |-
-      {
-        "email": "Esneider@bazaar.com",
-        "password": "123456789"
-      }
+  method: GET
+  url: "{{baseUrl}}/api/categorias"
   auth: inherit
 
 runtime:

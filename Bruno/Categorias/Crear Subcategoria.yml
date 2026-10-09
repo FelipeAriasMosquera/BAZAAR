@@ -1,18 +1,14 @@
 info:
-  name: 02. Login
+  name: Crear Subcategoria
   type: http
-  seq: 2
+  seq: 3
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/usuarios/login"
+  url: "{{baseUrl}}/api/categorias"
   body:
     type: json
-    data: |-
-      {
-        "email": "Esneider@bazaar.com",
-        "password": "123456789"
-      }
+    data: '{ "nombre": "Muebles", "categoriaPadreId": 4 }'
   auth: inherit
 
 runtime:

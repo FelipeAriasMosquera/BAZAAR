@@ -1,18 +1,14 @@
 info:
-  name: 02. Login
+  name: Borrar Categoria
   type: http
-  seq: 2
+  seq: 4
 
 http:
-  method: POST
-  url: "{{baseUrl}}/api/usuarios/login"
+  method: DELETE
+  url: "{{baseUrl}}/api/categorias/2"
   body:
     type: json
-    data: |-
-      {
-        "email": "Esneider@bazaar.com",
-        "password": "123456789"
-      }
+    data: ""
   auth: inherit
 
 runtime:

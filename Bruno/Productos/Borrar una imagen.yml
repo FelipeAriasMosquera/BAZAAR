@@ -1,0 +1,26 @@
+info:
+  name: Borrar una imagen
+  type: http
+  seq: 8
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/productos/3/imagenes/6"
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkxMzIyOTc5LCJleHAiOjE3OTE0MDkzNzl9.bzfdJbG5GIU8vIUJPV0nz7yXMZwdficfBP87kxRFJTIwr7GCfD6zXYLGqVHZ2y5c
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
