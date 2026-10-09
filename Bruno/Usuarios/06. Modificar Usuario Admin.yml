@@ -1,19 +1,16 @@
 info:
-  name: 01. Registrar Usuarios
+  name: 06. Modificar Usuario Admin
   type: http
-  seq: 1
+  seq: 6
 
 http:
-  method: POST
-  url: "{{baseUrl}}/api/usuarios/registro"
+  method: PUT
+  url: "{{baseUrl}}/api/usuarios/4/roles"
   body:
     type: json
     data: |-
       {
-        "nombre": "Pepe Grillo",
-        "email": "Pepe@bazaar.comm",
-        "password": "123456789",
-        "telefono": "3011234569"
+        "roles": ["COMPRADOR", "VENDEDOR"]
       }
   auth: inherit
 

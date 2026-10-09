@@ -1,0 +1,23 @@
+info:
+  name: 05. Todos los usuarios admin
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/usuarios"
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJjYXJsb3NAYmF6YWFyLmNvbSIsInJvbCI6IkNPTVBSQURPUixBRE1JTiIsImlhdCI6MTc5MTI1NTA4MywiZXhwIjoxNzkxMzQxNDgzfQ.MNJL2S8TWhr48R71HBYYxuBSFnSMjVh9wW3N15yxMHYqGF0Fv75I5nN8p16mB-A8
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

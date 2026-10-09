@@ -1,0 +1,23 @@
+info:
+  name: 04. Convert Vendedor
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/usuarios/me/vendedor"
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkxMjU0NzEyLCJleHAiOjE3OTEzNDExMTJ9.nScyGWa8vVzCBaQxKiol2F_BvTiLQFivP6JsNhGbZvxqSEvU1nBCIx-JxcOl3WnV
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
