@@ -18,7 +18,7 @@ public final class ProductoMapper {
 
         return new ProductoResponse(
                 producto.getId(),
-                producto.getVendedorId(),
+                producto.getVendedor().getId(),
                 producto.getCategoria() != null ? producto.getCategoria().getId() : null,
                 producto.getCategoria() != null ? producto.getCategoria().getNombre() : null,
                 producto.getNombre(),

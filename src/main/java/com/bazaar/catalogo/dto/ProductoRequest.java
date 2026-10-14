@@ -12,8 +12,7 @@ import java.util.List;
 
 public record ProductoRequest(
 
-        @NotNull(message = "El vendedor es obligatorio")
-        Long vendedorId,
+      
 
         Long categoriaId,
 
