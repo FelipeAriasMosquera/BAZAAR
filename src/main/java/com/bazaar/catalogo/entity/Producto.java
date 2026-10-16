@@ -1,6 +1,7 @@
 package com.bazaar.catalogo.entity;
 
 import com.bazaar.catalogo.entity.Categoria;
+import com.bazaar.usuarios.model.Usuario;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,10 +43,9 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: cuando exista la entidad Usuario (módulo usuarios), cambiar
-    // este campo por un @ManyToOne hacia ella.
-    @Column(name = "vendedor_id", nullable = false)
-    private Long vendedorId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vendedor_id", nullable = false)
+    private Usuario vendedor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")

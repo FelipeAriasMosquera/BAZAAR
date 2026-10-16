@@ -10,13 +10,13 @@ http:
     type: json
     data: |-
       {
-        "vendedorId": 1,
-        "categoriaId": 2,
-        "nombre": "iPhone 14",
-        "descripcion": "",
-        "tipoVenta": "fijo",
-        "precio": 899.99,
-        "stock": 5,
+
+        "categoriaId": 3,
+        "nombre": "iPhone 8808",
+        "descripcion": ":3333333333333",
+        "tipoVenta": "subasta",
+        "precio": 9999,
+        "stock": 200,
         "imagenes": [
           { "url": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRe0i9FQvH3bdRwC62L_bcnPzhHXB5jQUch8TAHtJPViPQLWVY705LgnKpDU8MKO37mn1uxz-08qOguXsk6nw0duambhTnPxLBCEdeNXpUzModr5Bsem9MeMQ", "orden": 0 },
           { "url": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRTwYlbrN7ke7nMojB01INUt4vxaNUvZwROiwVtufSrDU5VyUsn9BrAK7TtrQCqGozCPxbhf0RPqk0UzZdlmzxOv26uiqg41GvS-lTyw9gtRt0v2SCa_i7c", "orden": 1 }
@@ -24,7 +24,7 @@ http:
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJDYXJsaXRvc0BiYXphYXIuY29tIiwicm9sIjoiVkVOREVET1IiLCJpYXQiOjE3OTEyNTQ1MjcsImV4cCI6MTc5MTM0MDkyN30.zRDoVtfKiaS0oMqPLqm1EWqhlMu_KUO7XycVaC5VLrtKpxx-0FdZJuekfuZ9OHnD
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyMDE5MjI3LCJleHAiOjE3OTIxMDU2Mjd9.vHiRt0Rw5ZntMXQiE34MxLtYfC4zWYB7hLOowCtAAsqfh298oHh57X4z-lUkGvg9
 
 runtime:
   variables:

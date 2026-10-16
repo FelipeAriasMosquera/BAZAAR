@@ -10,9 +10,9 @@ http:
     type: json
     data: |-
       {
-        "vendedorId": 1,
+
         "categoriaId": 3,
-        "nombre": "iPhone 14",
+        "nombre": "iPhone 20",
         "descripcion": "iPhone 14 nuevo, sellado, 128GB, color azul medianoche",
         "tipoVenta": "fijo",
         "precio": 899.99,
@@ -20,7 +20,7 @@ http:
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkxMzIyOTc5LCJleHAiOjE3OTE0MDkzNzl9.bzfdJbG5GIU8vIUJPV0nz7yXMZwdficfBP87kxRFJTIwr7GCfD6zXYLGqVHZ2y5c
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SLFZFTkRFRE9SIiwiaWF0IjoxNzkyMDE3NDYyLCJleHAiOjE3OTIxMDM4NjJ9.yJHUIh7GljIP-xeVg-ZGb4lE_h4hJ1BRJRv3zWJU6UXNkeMNBndxynwPm5DhqcZh
 
 runtime:
   variables:
