@@ -8,7 +8,7 @@ http:
   url: "{{baseUrl}}/api/subastas"
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlc25laWRlckBiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SLFZFTkRFRE9SLEFETUlOIiwiaWF0IjoxNzkyNDY1NjI3LCJleHAiOjE3OTI1NTIwMjd9.EzALhaSoPpIk5hk0VeV8RTANPxGBiB7STCt2YE38QvkspsnVgmT2XsuEQcdht1cp
+    token: ""
 
 runtime:
   variables:
