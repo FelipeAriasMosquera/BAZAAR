@@ -8,6 +8,9 @@ import com.bazaar.usuarios.repository.DireccionRepository;
 import com.bazaar.usuarios.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import java.util.Objects;
 
 import java.util.List;
 
@@ -23,9 +26,9 @@ public class DireccionService {
     }
 
     @Transactional
-    public Direccion crear(Long usuarioId, DireccionRequest request) {
-        Usuario usuario = usuarioRepository.findById(usuarioId)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado: " + usuarioId));
+    public Direccion crear(DireccionRequest request) {
+        Usuario usuario = usuarioAutenticado();
+        Long usuarioId = usuario.getId();
 
         // Si es la primera dirección del usuario, queda como principal aunque no se pida explícitamente.
         boolean esPrimeraDireccion = direccionRepository.findByUsuarioId(usuarioId).isEmpty();
@@ -49,21 +52,19 @@ public class DireccionService {
     }
 
     @Transactional(readOnly = true)
-    public List<Direccion> listarPorUsuario(Long usuarioId) {
-        validarUsuarioExiste(usuarioId);
-        return direccionRepository.findByUsuarioId(usuarioId);
+    public List<Direccion> listar() {
+        return direccionRepository.findByUsuarioId(usuarioAutenticado().getId());
     }
 
     @Transactional(readOnly = true)
-    public Direccion obtener(Long usuarioId, Long direccionId) {
-        return direccionRepository.findByIdAndUsuarioId(direccionId, usuarioId)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Dirección no encontrada: " + direccionId + " para el usuario " + usuarioId));
+    public Direccion obtener(Long direccionId) {
+        return buscarDelUsuario(usuarioAutenticado().getId(), direccionId);
     }
 
     @Transactional
-    public Direccion actualizar(Long usuarioId, Long direccionId, DireccionRequest request) {
-        Direccion direccion = obtener(usuarioId, direccionId);
+    public Direccion actualizar(Long direccionId, DireccionRequest request) {
+        Long usuarioId = usuarioAutenticado().getId();
+        Direccion direccion = buscarDelUsuario(usuarioId, direccionId);
 
         direccion.setAlias(request.getAlias());
         direccion.setCalle(request.getCalle());
@@ -81,18 +82,19 @@ public class DireccionService {
     }
 
     @Transactional
-    public void marcarComoPrincipal(Long usuarioId, Long direccionId) {
-        Direccion direccion = obtener(usuarioId, direccionId);
+    public void marcarComoPrincipal(Long direccionId) {
+        Long usuarioId = usuarioAutenticado().getId();
+        Direccion direccion = buscarDelUsuario(usuarioId, direccionId);
         desmarcarPrincipalActual(usuarioId);
         direccion.setEsPrincipal(true);
         direccionRepository.save(direccion);
     }
 
     @Transactional
-    public void eliminar(Long usuarioId, Long direccionId) {
-        Direccion direccion = obtener(usuarioId, direccionId);
-        direccionRepository.delete(direccion);
+    public void eliminar(Long direccionId) {
+        direccionRepository.delete(buscarDelUsuario(usuarioAutenticado().getId(), direccionId));
     }
+
 
     private void validarUsuarioExiste(Long usuarioId) {
         if (!usuarioRepository.existsById(usuarioId)) {
@@ -106,5 +108,18 @@ public class DireccionService {
                     d.setEsPrincipal(false);
                     direccionRepository.save(d);
                 });
+    }
+
+    private Direccion buscarDelUsuario(Long usuarioId, Long direccionId) {
+        return direccionRepository.findByIdAndUsuarioId(direccionId, usuarioId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Dirección no encontrada: " + direccionId));
+    }
+
+    private Usuario usuarioAutenticado() {
+        Authentication auth = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication());
+        String email = auth.getName();
+        return usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario autenticado no encontrado: " + email));
     }
 }

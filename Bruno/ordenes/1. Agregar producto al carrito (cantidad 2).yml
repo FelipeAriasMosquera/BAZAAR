@@ -1,0 +1,37 @@
+info:
+  name: 1. Agregar producto al carrito (cantidad 2)
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "productoId": {{productoId}},
+        "cantidad": 2
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTU1MDU0LCJleHAiOjE3OTI2NDE0NTR9.CqB0Tybkb916WMFEnYSOuf_r80EgW_Go-EoPaDlrnUx0RYUPjqG3vpjyXTvWGKmw
+
+runtime:
+  variables:
+    - name: usuarioId
+      value: "4"
+    - name: baseUrl
+      value: http://localhost:8080
+    - name: productoId
+      value: "1"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -13,10 +13,14 @@ import com.bazaar.catalogo.entity.TipoVenta;
 import com.bazaar.catalogo.repository.ProductoRepository;
 import com.bazaar.common.exception.BusinessException;
 import com.bazaar.common.exception.ResourceNotFoundException;
+import com.bazaar.usuarios.model.Usuario;
+import com.bazaar.usuarios.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -26,14 +30,14 @@ public class CarritoService {
     private final CarritoRepository carritoRepository;
     private final CarritoItemRepository carritoItemRepository;
     private final ProductoRepository productoRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public CarritoResponse obtenerCarrito(Long usuarioId) {
-        return CarritoMapper.toResponse(obtenerOCrearCarrito(usuarioId));
+    public CarritoResponse obtenerCarrito() {
+        return CarritoMapper.toResponse(obtenerOCrearCarrito());
     }
 
-    @Transactional
-    public CarritoResponse agregarItem(Long usuarioId, CarritoItemRequest request) {
-        Carrito carrito = obtenerOCrearCarrito(usuarioId);
+    public CarritoResponse agregarItem(CarritoItemRequest request) {
+        Carrito carrito = obtenerOCrearCarrito();
         Producto producto = buscarProductoVendible(request.productoId());
 
         int cantidadFinal = carritoItemRepository
@@ -56,11 +60,11 @@ public class CarritoService {
     }
 
     @Transactional
-    public CarritoResponse actualizarCantidad(Long usuarioId, Long itemId, Integer cantidad) {
-        Carrito carrito = obtenerOCrearCarrito(usuarioId);
+    public CarritoResponse actualizarCantidad(Long itemId, Integer cantidad) {
+        Carrito carrito = obtenerOCrearCarrito();
         CarritoItem item = carritoItemRepository.findByIdAndCarrito_Id(itemId, carrito.getId())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "El ítem " + itemId + " no pertenece al carrito del usuario " + usuarioId));
+                        "El ítem " + itemId + " no pertenece a tu carrito"));
 
         validarStock(item.getProducto(), cantidad);
         item.setCantidad(cantidad);
@@ -69,24 +73,26 @@ public class CarritoService {
     }
 
     @Transactional
-    public CarritoResponse eliminarItem(Long usuarioId, Long itemId) {
-        Carrito carrito = obtenerOCrearCarrito(usuarioId);
+    public CarritoResponse eliminarItem(Long itemId) {
+        Carrito carrito = obtenerOCrearCarrito();
         boolean eliminado = carrito.getItems().removeIf(item -> item.getId().equals(itemId));
         if (!eliminado) {
-            throw new ResourceNotFoundException(
-                    "El ítem " + itemId + " no pertenece al carrito del usuario " + usuarioId);
+            throw new ResourceNotFoundException("El ítem " + itemId + " no pertenece a tu carrito");
         }
         return CarritoMapper.toResponse(carrito);
     }
 
     @Transactional
-    public void vaciarCarrito(Long usuarioId) {
-        obtenerOCrearCarrito(usuarioId).getItems().clear();
+    public void vaciarCarrito() {
+        obtenerOCrearCarrito().getItems().clear();
     }
-
     private Carrito obtenerOCrearCarrito(Long usuarioId) {
         return carritoRepository.findByUsuarioId(usuarioId)
-                .orElseGet(() -> carritoRepository.save(Carrito.builder().usuarioId(usuarioId).build()));
+                .orElseGet(() -> {
+                    Usuario usuario = usuarioRepository.findById(usuarioId)
+                            .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado: " + usuarioId));
+                    return carritoRepository.save(Carrito.builder().usuario(usuario).build());
+                });
     }
 
     /**
@@ -117,5 +123,18 @@ public class CarritoService {
                     "Stock insuficiente para '" + producto.getNombre() + "' (disponible: "
                             + (stock == null ? 0 : stock) + ")");
         }
+    }
+
+    private Usuario usuarioAutenticado() {
+        Authentication auth = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication());
+        String email = auth.getName();
+        return usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario autenticado no encontrado: " + email));
+    }
+
+    private Carrito obtenerOCrearCarrito() {
+        Usuario usuario = usuarioAutenticado();
+        return carritoRepository.findByUsuarioId(usuario.getId())
+                .orElseGet(() -> carritoRepository.save(Carrito.builder().usuario(usuario).build()));
     }
 }

@@ -1,0 +1,43 @@
+info:
+  name: "2. Checkout: crear orden desde el carrito (201)"
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/ordenes"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "direccionId": {{direccionId}}
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTU1MDU0LCJleHAiOjE3OTI2NDE0NTR9.CqB0Tybkb916WMFEnYSOuf_r80EgW_Go-EoPaDlrnUx0RYUPjqG3vpjyXTvWGKmw
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+    - name: usuarioId
+      value: "4"
+    - name: direccionId
+      value: "3"
+  scripts:
+    - type: after-response
+      code: "if (res.getStatus() === 201) {\r
+
+        \    bru.setCollectionVar('ordenId', res.getBody().id);\r
+
+        }"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

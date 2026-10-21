@@ -1,0 +1,16 @@
+info:
+  name: 8. Vaciar carrito completo
+  type: http
+  seq: 1
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -23,15 +23,16 @@ http:
   auth: inherit
 
 runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+    - name: usuarioId
+      value: "4"
   scripts:
     - type: after-response
       code: "const json = res.getBody();\r
 
         bru.setCollectionVar('direccionId', json.id);"
-        
-  variables:
-    - name: baseUrl
-      value: http://localhost:8080
 
 settings:
   encodeUrl: true
