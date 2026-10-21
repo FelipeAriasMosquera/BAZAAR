@@ -10,10 +10,12 @@ http:
     type: json
     data: |-
       {
-        "email": "Esneider@bazaar.com",
+        "email": "Felipiho@bazaar.com",
         "password": "123456789"
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTQ4MjQ0LCJleHAiOjE3OTI2MzQ2NDR9.Rv_BRFoXfHG_qli8XiBQGtFI0tNMmzxdHGorUn7D0Duy_FrtyHNayQjITeD4xxtz
 
 runtime:
   variables:

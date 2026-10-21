@@ -1,0 +1,26 @@
+info:
+  name: Generar Pago Rechazado
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/pagos"
+  body:
+    type: json
+    data: '  {"ordenId": 1004, "metodo": "wallet"}'
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTQ4MjQ0LCJleHAiOjE3OTI2MzQ2NDR9.Rv_BRFoXfHG_qli8XiBQGtFI0tNMmzxdHGorUn7D0Duy_FrtyHNayQjITeD4xxtz
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
