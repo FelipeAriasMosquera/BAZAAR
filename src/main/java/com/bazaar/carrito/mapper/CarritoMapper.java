@@ -21,7 +21,7 @@ public class CarritoMapper {
                 .map(CarritoItemResponse::subtotal)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        return new CarritoResponse(carrito.getId(), carrito.getUsuarioId(), items, total);
+        return new CarritoResponse(carrito.getId(), carrito.getUsuario().getId(), items, total);
     }
 
     public static CarritoItemResponse toItemResponse(CarritoItem item) {

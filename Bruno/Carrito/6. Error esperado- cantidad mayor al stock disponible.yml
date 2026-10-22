@@ -1,0 +1,27 @@
+info:
+  name: "6. Error esperado: cantidad mayor al stock disponible"
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items/{{itemId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "cantidad": 999999
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tbSIsInJvbCI6IkNPTVBSQURPUiIsImlhdCI6MTc5MTUwNzI5NSwiZXhwIjoxNzkxNTkzNjk1fQ.ogFY7yNrsLzwTiT-r_EdKhH8ztj8NufGtwii59S2O_lLzyNeaDip8uLzMMXhuL3e
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

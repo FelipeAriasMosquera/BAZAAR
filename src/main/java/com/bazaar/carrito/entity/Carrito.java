@@ -1,5 +1,6 @@
 package com.bazaar.carrito.entity;
 
+import com.bazaar.usuarios.model.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,10 +25,9 @@ public class Carrito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: cuando el módulo de usuarios exponga la entidad Usuario, cambiar
-    // por un @ManyToOne, igual que quedó pendiente en Producto.vendedorId.
-    @Column(name = "usuario_id", nullable = false)
-    private Long usuarioId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private Instant fechaCreacion;

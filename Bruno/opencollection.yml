@@ -13,6 +13,17 @@ config:
         username: ""
         password: ""
       bypassProxy: ""
+
+request:
+  variables:
+    - name: direccionId
+      value:
+        type: number
+        data: "3"
+    - name: ordenId
+      value:
+        type: number
+        data: "2"
 bundled: false
 extensions:
   bruno:

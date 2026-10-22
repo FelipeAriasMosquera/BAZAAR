@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/usuarios/{usuarioId}/direcciones")
+@RequestMapping("/api/direcciones")
 public class DireccionController {
 
     private final DireccionService direccionService;
@@ -23,44 +23,37 @@ public class DireccionController {
     }
 
     @PostMapping
-    public ResponseEntity<DireccionResponse> crear(
-            @PathVariable Long usuarioId,
-            @Valid @RequestBody DireccionRequest request) {
-        Direccion creada = direccionService.crear(usuarioId, request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new DireccionResponse(creada));
+    public ResponseEntity<DireccionResponse> crear(@Valid @RequestBody DireccionRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new DireccionResponse(direccionService.crear(request)));
     }
 
     @GetMapping
-    public List<DireccionResponse> listar(@PathVariable Long usuarioId) {
-        return direccionService.listarPorUsuario(usuarioId).stream()
-                .map(DireccionResponse::new)
-                .collect(Collectors.toList());
+    public List<DireccionResponse> listar() {
+        return direccionService.listar().stream().map(DireccionResponse::new).collect(Collectors.toList());
     }
 
     @GetMapping("/{direccionId}")
-    public DireccionResponse obtener(@PathVariable Long usuarioId, @PathVariable Long direccionId) {
-        return new DireccionResponse(direccionService.obtener(usuarioId, direccionId));
+    public DireccionResponse obtener(@PathVariable Long direccionId) {
+        return new DireccionResponse(direccionService.obtener(direccionId));
     }
 
     @PutMapping("/{direccionId}")
     public DireccionResponse actualizar(
-            @PathVariable Long usuarioId,
             @PathVariable Long direccionId,
             @Valid @RequestBody DireccionRequest request) {
-        return new DireccionResponse(direccionService.actualizar(usuarioId, direccionId, request));
+        return new DireccionResponse(direccionService.actualizar(direccionId, request));
     }
 
     @PatchMapping("/{direccionId}/principal")
-    public ResponseEntity<Void> marcarComoPrincipal(
-            @PathVariable Long usuarioId,
-            @PathVariable Long direccionId) {
-        direccionService.marcarComoPrincipal(usuarioId, direccionId);
+    public ResponseEntity<Void> marcarComoPrincipal(@PathVariable Long direccionId) {
+        direccionService.marcarComoPrincipal(direccionId);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{direccionId}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long usuarioId, @PathVariable Long direccionId) {
-        direccionService.eliminar(usuarioId, direccionId);
+    public ResponseEntity<Void> eliminar(@PathVariable Long direccionId) {
+        direccionService.eliminar(direccionId);
         return ResponseEntity.noContent().build();
     }
 }
