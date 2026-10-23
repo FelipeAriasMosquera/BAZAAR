@@ -1,0 +1,23 @@
+info:
+  name: Consultar Pago
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/pagos/1"
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTQ4MjQ0LCJleHAiOjE3OTI2MzQ2NDR9.Rv_BRFoXfHG_qli8XiBQGtFI0tNMmzxdHGorUn7D0Duy_FrtyHNayQjITeD4xxtz
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
