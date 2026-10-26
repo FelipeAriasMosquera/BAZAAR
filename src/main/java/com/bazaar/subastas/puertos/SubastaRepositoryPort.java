@@ -16,4 +16,6 @@ public interface SubastaRepositoryPort {
     Subasta guardar(Subasta subasta);
     Puja guardarPuja(Puja puja);
     List<Puja> listarPujas(Long subastaId);
+    boolean existePorProducto(Long productoId);
+
 }

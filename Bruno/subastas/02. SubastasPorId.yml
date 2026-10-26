@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/subastas/1"
+  url: "{{baseUrl}}/api/subastas/4"
   auth:
     type: bearer
     token: ""
