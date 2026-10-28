@@ -34,10 +34,13 @@ public class RegistrarPagoUseCase {
         this.ordenes = ordenes;
     }
 
-    public Pago ejecutar(Long ordenId, MetodoPago metodo) {
+    public Pago ejecutar(Long ordenId, MetodoPago metodo, String emailSolicitante) {
         OrdenParaPago orden = ordenes.buscarPorId(ordenId)
                 .orElseThrow(() -> new ResourceNotFoundException("Orden no encontrada con id " + ordenId));
 
+        if (!orden.perteneceA(emailSolicitante)) {
+            throw new ResourceNotFoundException("Orden no encontrada con id " + ordenId);
+        }
         if (!orden.pendienteDePago()) {
             throw new BusinessException("La orden " + ordenId + " no está pendiente de pago");
         }
@@ -47,6 +50,7 @@ public class RegistrarPagoUseCase {
         if (pagos.existePagoVigente(ordenId)) {
             throw new BusinessException("La orden " + ordenId + " ya tiene un pago pendiente o aprobado");
         }
+
 
         Pago pago = pagos.guardar(Pago.nuevo(ordenId, metodo, orden.total()));
 

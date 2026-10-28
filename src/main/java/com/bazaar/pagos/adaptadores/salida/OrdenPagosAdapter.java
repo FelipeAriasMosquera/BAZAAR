@@ -43,7 +43,7 @@ public class OrdenPagosAdapter implements OrdenPort {
                 orden.getId(),
                 orden.getUsuario().getId(),
                 orden.getTotal(),
-                // Se usa la regla de la propia orden: así, si cambia su ciclo de vida, pagos lo respeta.
+                orden.getUsuario().getEmail(),
                 orden.getEstado().permiteTransicionA(EstadoOrden.PAGADA),
                 orden.getDireccionId() != null));
     }

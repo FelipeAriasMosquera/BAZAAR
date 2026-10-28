@@ -12,6 +12,10 @@ import java.math.BigDecimal;
  *                              pendientes), y no se puede enviar sin dirección. Por eso pagos no
  *                              cobra una orden sin dirección: quedaría pagada y atascada.
  */
-public record OrdenParaPago(Long id, Long usuarioId, BigDecimal total,
+public record OrdenParaPago(Long id, Long usuarioId, BigDecimal total, String emailPropietario,
                             boolean pendienteDePago, boolean tieneDireccionDeEnvio) {
+
+    public boolean perteneceA(String email) {
+        return emailPropietario != null && emailPropietario.equalsIgnoreCase(email);
+    }
 }

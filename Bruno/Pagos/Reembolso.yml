@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/pagos/5/reembolso"
+  url: "{{baseUrl}}/api/pagos/9/reembolso"
   body:
     type: json
     data: |2-
@@ -13,7 +13,7 @@ http:
       {}
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMDY0NjYxLCJleHAiOjE3OTMxNTEwNjF9.XYM-r2zXTnCL7quqWCxCE6YDy592ex7nmr8PukjbMUJXmYlQXVTCawg8mxFvm9jx
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJFc25laWRlckBiYXphYXIuY29tIiwicm9sIjoiQURNSU4iLCJpYXQiOjE3OTMxNTU1ODcsImV4cCI6MTc5MzI0MTk4N30.hH6R7ZZr00BdoyiQh7Yv94cccmgTzt5LjDAS2uq4iO15hBY4Ntareh-JyB0EVMvg
 
 runtime:
   variables:

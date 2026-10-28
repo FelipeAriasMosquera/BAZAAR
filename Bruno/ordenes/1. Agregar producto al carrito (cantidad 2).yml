@@ -18,7 +18,7 @@ http:
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SLFZFTkRFRE9SIiwiaWF0IjoxNzkzMDU5MDc1LCJleHAiOjE3OTMxNDU0NzV9.LgQ8dN9AXC6M9X_e9TT8RE08hJ-G1R_FDBpJvJTJBCFq2jWcQjFn7u3ngo8XIK2t
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMTUzNDQwLCJleHAiOjE3OTMyMzk4NDB9.9Og8C-JlEhY5NCM3dUEQFivK0aTFJGJgZ1zVLzdnaIzzjITcUxJFQ-s1GU4oaPyz
 
 runtime:
   variables:

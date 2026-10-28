@@ -20,7 +20,9 @@ http:
         "pais": "Colombia",
         "codigoPostal": "763533"
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJFc25laWRlckBiYXphYXIuY29tIiwicm9sIjoiQURNSU4iLCJpYXQiOjE3OTMxNDkwNDcsImV4cCI6MTc5MzIzNTQ0N30.y2qBXNXaU4Y4UWgBurtrT4vjrdz7T3nvAHMle6H0gB2j1sD79_H_3DmnRCtqId4-
 
 runtime:
   variables:

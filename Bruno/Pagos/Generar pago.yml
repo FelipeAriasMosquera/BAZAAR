@@ -10,12 +10,12 @@ http:
     type: json
     data: |-
       {
-       "ordenId": 1,
+       "ordenId": 7,
        "metodo": "tarjeta"
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMDY0NjYxLCJleHAiOjE3OTMxNTEwNjF9.XYM-r2zXTnCL7quqWCxCE6YDy592ex7nmr8PukjbMUJXmYlQXVTCawg8mxFvm9jx
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMTUzNDQwLCJleHAiOjE3OTMyMzk4NDB9.9Og8C-JlEhY5NCM3dUEQFivK0aTFJGJgZ1zVLzdnaIzzjITcUxJFQ-s1GU4oaPyz
 
 runtime:
   variables:

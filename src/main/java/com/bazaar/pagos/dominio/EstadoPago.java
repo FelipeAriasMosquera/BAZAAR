@@ -7,6 +7,7 @@ public enum EstadoPago {
     PENDIENTE("pendiente"),
     APROBADO("aprobado"),
     RECHAZADO("rechazado"),
+    REEMBOLSO_EN_PROCESO("reembolso_en_proceso"),
     REEMBOLSADO("reembolsado");
 
     private final String valor;

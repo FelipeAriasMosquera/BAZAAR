@@ -87,6 +87,23 @@ public class Pago {
         }
     }
 
+    /** Reserva el pago para reembolsarlo: tras esto nadie más puede iniciar otro reembolso. */
+    public void iniciarReembolso() {
+        exigirEstado(EstadoPago.APROBADO, "reembolsar");
+        this.estado = EstadoPago.REEMBOLSO_EN_PROCESO;
+    }
+
+    public void confirmarReembolso() {
+        exigirEstado(EstadoPago.REEMBOLSO_EN_PROCESO, "confirmar el reembolso de");
+        this.estado = EstadoPago.REEMBOLSADO;
+    }
+
+    /** La pasarela rechazó el reembolso: el pago vuelve a estar aprobado. */
+    public void revertirReembolso() {
+        exigirEstado(EstadoPago.REEMBOLSO_EN_PROCESO, "revertir el reembolso de");
+        this.estado = EstadoPago.APROBADO;
+    }
+
     public Long getId() {
         return id;
     }
