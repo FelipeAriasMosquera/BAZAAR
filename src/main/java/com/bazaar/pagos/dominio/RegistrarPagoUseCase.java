@@ -1,5 +1,6 @@
 package com.bazaar.pagos.dominio;
 
+
 import com.bazaar.common.exception.BusinessException;
 import com.bazaar.common.exception.ResourceNotFoundException;
 import com.bazaar.pagos.puertos.OrdenPort;
@@ -39,6 +40,9 @@ public class RegistrarPagoUseCase {
 
         if (!orden.pendienteDePago()) {
             throw new BusinessException("La orden " + ordenId + " no está pendiente de pago");
+        }
+        if (!orden.tieneDireccionDeEnvio()) {
+            throw new BusinessException("La orden " + ordenId + " no tiene dirección de envío: asígnala antes de pagar");
         }
         if (pagos.existePagoVigente(ordenId)) {
             throw new BusinessException("La orden " + ordenId + " ya tiene un pago pendiente o aprobado");

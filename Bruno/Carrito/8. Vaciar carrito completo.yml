@@ -8,6 +8,13 @@ http:
   url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito"
   auth: inherit
 
+runtime:
+  variables:
+    - name: usuarioId
+      value: "5"
+    - name: baseUrl
+      value: http://localhost:8080
+
 settings:
   encodeUrl: true
   timeout: 0

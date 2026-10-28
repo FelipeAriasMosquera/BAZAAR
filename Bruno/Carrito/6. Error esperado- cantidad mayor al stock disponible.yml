@@ -5,7 +5,7 @@ info:
 
 http:
   method: PUT
-  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items/{{itemId}}"
+  url: "{{baseUrl}}/api/carrito/items/{{itemId}}"
   headers:
     - name: Content-Type
       value: application/json
@@ -13,11 +13,16 @@ http:
     type: json
     data: |-
       {
-        "cantidad": 999999
+        "cantidad":1
       }
   auth:
     type: bearer
     token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tbSIsInJvbCI6IkNPTVBSQURPUiIsImlhdCI6MTc5MTUwNzI5NSwiZXhwIjoxNzkxNTkzNjk1fQ.ogFY7yNrsLzwTiT-r_EdKhH8ztj8NufGtwii59S2O_lLzyNeaDip8uLzMMXhuL3e
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
 
 settings:
   encodeUrl: true

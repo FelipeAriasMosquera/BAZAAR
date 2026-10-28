@@ -62,7 +62,11 @@ final class PagosFakes {
         final List<Long> marcadasComoPagadas = new ArrayList<>();
 
         void agregar(Long id, String total, boolean pendienteDePago) {
-            almacen.put(id, new OrdenParaPago(id, 1L, new BigDecimal(total), pendienteDePago));
+            agregar(id, total, pendienteDePago, true);
+        }
+
+        void agregar(Long id, String total, boolean pendienteDePago, boolean tieneDireccionDeEnvio) {
+            almacen.put(id, new OrdenParaPago(id, 1L, new BigDecimal(total), pendienteDePago, tieneDireccionDeEnvio));
         }
 
         @Override
@@ -74,7 +78,7 @@ final class PagosFakes {
         public void marcarComoPagada(Long ordenId) {
             marcadasComoPagadas.add(ordenId);
             OrdenParaPago o = almacen.get(ordenId);
-            almacen.put(ordenId, new OrdenParaPago(o.id(), o.usuarioId(), o.total(), false));
+            almacen.put(ordenId, new OrdenParaPago(o.id(), o.usuarioId(), o.total(), false, o.tieneDireccionDeEnvio()));
         }
     }
 

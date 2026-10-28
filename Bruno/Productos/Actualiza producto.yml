@@ -5,22 +5,26 @@ info:
 
 http:
   method: PUT
-  url: "{{baseUrl}}/api/productos/1"
+  url: "{{baseUrl}}/api/productos/13"
   body:
     type: json
     data: |-
       {
 
-        "categoriaId": 3,
-        "nombre": "iPhone 20",
-        "descripcion": "iPhone 14 nuevo, sellado, 128GB, color azul medianoche",
+        "categoriaId": 8,
+        "nombre": "Aretes",
+        "descripcion": "Cogantes de oro para orejas",
         "tipoVenta": "fijo",
-        "precio": 899.99,
-        "stock": 5
+        "precio": 800000,
+        "stock": 20,
+        "imagenes": [
+          { "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQLSC2Hiu8QBkeq_sfYc-gdNMh0vdYVKiYYjIJrspthoYUoT511xNvvqnQ&s=10", "orden": 0 },
+          { "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-_9itfU9wufVDwf9Ls8CFHgMIQfTGKfxJVDytByvR8KYqDj2hElrkfvY&s=10", "orden": 1 }
+        ]
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SLFZFTkRFRE9SIiwiaWF0IjoxNzkyMDE3NDYyLCJleHAiOjE3OTIxMDM4NjJ9.yJHUIh7GljIP-xeVg-ZGb4lE_h4hJ1BRJRv3zWJU6UXNkeMNBndxynwPm5DhqcZh
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiVkVOREVET1IsQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzE3MzQxLCJleHAiOjE3OTI4MDM3NDF9.aYf6E1oGNpL_GPSfuBnb1pK2FJNmvhyaFhyUvydCUMJBCy1qrgrWguf79DLdDSg9
 
 runtime:
   variables:

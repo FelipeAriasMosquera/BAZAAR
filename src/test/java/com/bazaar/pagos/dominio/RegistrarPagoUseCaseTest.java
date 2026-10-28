@@ -104,6 +104,19 @@ class RegistrarPagoUseCaseTest {
     }
 
     @Test
+    void unaOrdenSinDireccionDeEnvioNoSePuedePagar() {
+        ordenes.agregar(1005L, "99000.00", true, false);
+
+        BusinessException ex = assertThrows(BusinessException.class,
+                () -> useCase.ejecutar(1005L, MetodoPago.TARJETA));
+
+        assertTrue(ex.getMessage().contains("dirección de envío"));
+        assertTrue(pagos.almacen.isEmpty());
+        assertTrue(pasarela.cobros.isEmpty());
+        assertTrue(ordenes.marcadasComoPagadas.isEmpty());
+    }
+
+    @Test
     void unaOrdenConUnPagoPendienteOAprobadoNoAdmiteOtroPago() {
         pagos.sembrar(1001L, "150000.00", EstadoPago.PENDIENTE, null);
 

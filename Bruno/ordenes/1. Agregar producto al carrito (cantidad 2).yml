@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items"
+  url: "{{baseUrl}}/api/carrito/items"
   headers:
     - name: Content-Type
       value: application/json
@@ -14,11 +14,11 @@ http:
     data: |-
       {
         "productoId": {{productoId}},
-        "cantidad": 2
+        "cantidad": 1
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTU1MDU0LCJleHAiOjE3OTI2NDE0NTR9.CqB0Tybkb916WMFEnYSOuf_r80EgW_Go-EoPaDlrnUx0RYUPjqG3vpjyXTvWGKmw
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SLFZFTkRFRE9SIiwiaWF0IjoxNzkzMDU5MDc1LCJleHAiOjE3OTMxNDU0NzV9.LgQ8dN9AXC6M9X_e9TT8RE08hJ-G1R_FDBpJvJTJBCFq2jWcQjFn7u3ngo8XIK2t
 
 runtime:
   variables:
@@ -27,7 +27,7 @@ runtime:
     - name: baseUrl
       value: http://localhost:8080
     - name: productoId
-      value: "1"
+      value: "11"
 
 settings:
   encodeUrl: true

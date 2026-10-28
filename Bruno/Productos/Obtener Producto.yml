@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/productos/1"
+  url: "{{baseUrl}}/api/productos/13"
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkxMzIyOTc5LCJleHAiOjE3OTE0MDkzNzl9.bzfdJbG5GIU8vIUJPV0nz7yXMZwdficfBP87kxRFJTIwr7GCfD6zXYLGqVHZ2y5c
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiVkVOREVET1IsQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzE3MzQxLCJleHAiOjE3OTI4MDM3NDF9.aYf6E1oGNpL_GPSfuBnb1pK2FJNmvhyaFhyUvydCUMJBCy1qrgrWguf79DLdDSg9
 
 runtime:
   variables:

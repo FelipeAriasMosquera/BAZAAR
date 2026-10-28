@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/direcciones"
+  url: "{{baseUrl}}/api/direcciones"
   headers:
     - name: Content-Type
       value: application/json

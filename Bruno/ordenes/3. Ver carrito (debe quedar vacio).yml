@@ -8,7 +8,7 @@ http:
   url: "{{baseUrl}}/api/carrito"
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTU4NDY3LCJleHAiOjE3OTI2NDQ4Njd9.78A0s9eD72NHsj2TiVr8kdQDVcrv3ZTvDuJk2WsrBi1Xar_qKse1c6py4SY6lffv
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SLFZFTkRFRE9SIiwiaWF0IjoxNzkzMDU5MDc1LCJleHAiOjE3OTMxNDU0NzV9.LgQ8dN9AXC6M9X_e9TT8RE08hJ-G1R_FDBpJvJTJBCFq2jWcQjFn7u3ngo8XIK2t
 
 runtime:
   variables:

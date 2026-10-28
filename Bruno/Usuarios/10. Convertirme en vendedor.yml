@@ -6,6 +6,9 @@ info:
 http:
   method: POST
   url: "{{baseUrl}}/api/usuarios/me/vendedor"
+  body:
+    type: json
+    data: "\n"
   auth: inherit
 
 runtime:

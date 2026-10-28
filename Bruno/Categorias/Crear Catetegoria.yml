@@ -8,8 +8,10 @@ http:
   url: "{{baseUrl}}/api/categorias"
   body:
     type: json
-    data: '{ "nombre": "Gamming" }'
-  auth: inherit
+    data: '{ "nombre": "Belleza" }'
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiVkVOREVET1IsQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzE3MzQxLCJleHAiOjE3OTI4MDM3NDF9.aYf6E1oGNpL_GPSfuBnb1pK2FJNmvhyaFhyUvydCUMJBCy1qrgrWguf79DLdDSg9
 
 runtime:
   variables:

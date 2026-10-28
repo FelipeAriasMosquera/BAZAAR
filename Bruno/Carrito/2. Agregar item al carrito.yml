@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/carrito/items"
+  url: "{{baseUrl}}/api/carrito/items"
   headers:
     - name: Content-Type
       value: application/json
@@ -18,9 +18,14 @@ http:
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tbSIsInJvbCI6IkNPTVBSQURPUiIsImlhdCI6MTc5MTUwNzI5NSwiZXhwIjoxNzkxNTkzNjk1fQ.ogFY7yNrsLzwTiT-r_EdKhH8ztj8NufGtwii59S2O_lLzyNeaDip8uLzMMXhuL3e
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiVkVOREVET1IsQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzE3MzQxLCJleHAiOjE3OTI4MDM3NDF9.aYf6E1oGNpL_GPSfuBnb1pK2FJNmvhyaFhyUvydCUMJBCy1qrgrWguf79DLdDSg9
 
 runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+    - name: productoId
+      value: "13"
   scripts:
     - type: after-response
       code: "const json = res.getBody();\r
