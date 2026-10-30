@@ -5,13 +5,13 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/usuarios/999999/direcciones/{{direccionId}}"
+  url: "{{baseUrl}}/api/2/direcciones/{{direccionId}}"
   auth: inherit
 
 runtime:
   variables:
     - name: baseUrl
-      value: "http://localhost:8080 "
+      value: http://localhost:8080
 
 settings:
   encodeUrl: true

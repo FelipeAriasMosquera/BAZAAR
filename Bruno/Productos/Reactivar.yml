@@ -8,7 +8,7 @@ http:
   url: "{{baseUrl}}/api/productos/10/reactivar"
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJFc25laWRlckBiYXphYXIuY29tIiwicm9sIjoiQURNSU4iLCJpYXQiOjE3OTIwMjA0ODksImV4cCI6MTc5MjEwNjg4OX0.4g0EHAdWYVD6BwdVV-WhB-uh68xBZo_5bV3Pby1CXyRRc4E7K49QYOK-0u3XCWdV
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMTQ2ODczLCJleHAiOjE3OTMyMzMyNzN9.yDfaxDiU5qVT2NecRDVpWFuCDFppuzXbXxF5UwGQSVm-IuVtZDNGP4X1uM9UKU1T
 
 runtime:
   variables:

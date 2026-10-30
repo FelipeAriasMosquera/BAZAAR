@@ -6,6 +6,13 @@ info:
 http:
   method: PATCH
   url: "{{baseUrl}}/api/usuarios/me/password"
+  body:
+    type: json
+    data: |-
+      {
+        "passwordActual": "123456789",
+        "passwordNueva": "987654321" 
+      }
   auth: inherit
 
 runtime:

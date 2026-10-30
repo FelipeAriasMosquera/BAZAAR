@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,8 +44,15 @@ public class PagoController {
     private final ReembolsarPagoUseCase reembolsarPago;
 
     @PostMapping
-    public ResponseEntity<PagoResponse> pagar(@Valid @RequestBody PagoRequest request) {
-        Pago pago = registrarPago.ejecutar(request.ordenId(), MetodoPago.desde(request.metodo()));
+    public ResponseEntity<PagoResponse> pagar(
+            @Valid @RequestBody PagoRequest request,
+            Authentication authentication
+    ) {
+        Pago pago = registrarPago.ejecutar(
+                request.ordenId(),
+                MetodoPago.desde(request.metodo()),
+                authentication.getName());   // <- el correo
+
         return ResponseEntity.created(URI.create("/api/pagos/" + pago.getId()))
                 .body(PagoMapper.toResponse(pago));
     }
@@ -61,8 +70,25 @@ public class PagoController {
         return ResponseEntity.ok(pagos);
     }
 
+
     @PostMapping("/{id}/reembolso")
-    public ResponseEntity<PagoResponse> reembolsar(@PathVariable Long id) {
-        return ResponseEntity.ok(PagoMapper.toResponse(reembolsarPago.ejecutar(id)));
+    public ResponseEntity<PagoResponse> reembolsar(
+            @PathVariable Long id,
+            Authentication authentication
+    ) {
+        verificarAdmin(authentication);
+        Pago pago = reembolsarPago.ejecutar(id);
+        return ResponseEntity.ok(PagoMapper.toResponse(pago));
     }
+
+    private void verificarAdmin(Authentication auth) {
+        boolean esAdmin = auth != null && auth.getAuthorities().stream()
+                .anyMatch(a -> "ROLE_ADMIN".equals(a.getAuthority()));
+        if (!esAdmin) {
+            throw new AccessDeniedException("Solo un administrador puede realizar reembolsos");
+        }
+    }
+
+
+
 }

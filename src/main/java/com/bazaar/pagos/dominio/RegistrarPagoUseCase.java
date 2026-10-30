@@ -1,5 +1,6 @@
 package com.bazaar.pagos.dominio;
 
+
 import com.bazaar.common.exception.BusinessException;
 import com.bazaar.common.exception.ResourceNotFoundException;
 import com.bazaar.pagos.puertos.OrdenPort;
@@ -33,16 +34,23 @@ public class RegistrarPagoUseCase {
         this.ordenes = ordenes;
     }
 
-    public Pago ejecutar(Long ordenId, MetodoPago metodo) {
+    public Pago ejecutar(Long ordenId, MetodoPago metodo, String emailSolicitante) {
         OrdenParaPago orden = ordenes.buscarPorId(ordenId)
                 .orElseThrow(() -> new ResourceNotFoundException("Orden no encontrada con id " + ordenId));
 
+        if (!orden.perteneceA(emailSolicitante)) {
+            throw new ResourceNotFoundException("Orden no encontrada con id " + ordenId);
+        }
         if (!orden.pendienteDePago()) {
             throw new BusinessException("La orden " + ordenId + " no está pendiente de pago");
+        }
+        if (!orden.tieneDireccionDeEnvio()) {
+            throw new BusinessException("La orden " + ordenId + " no tiene dirección de envío: asígnala antes de pagar");
         }
         if (pagos.existePagoVigente(ordenId)) {
             throw new BusinessException("La orden " + ordenId + " ya tiene un pago pendiente o aprobado");
         }
+
 
         Pago pago = pagos.guardar(Pago.nuevo(ordenId, metodo, orden.total()));
 

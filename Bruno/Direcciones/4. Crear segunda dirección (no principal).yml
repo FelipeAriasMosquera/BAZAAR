@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/direcciones"
+  url: "{{baseUrl}}/api/direcciones"
   headers:
     - name: Content-Type
       value: application/json
@@ -21,12 +21,14 @@ http:
         "codigoPostal": "760001",
         "esPrincipal": false
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMTUzNDQwLCJleHAiOjE3OTMyMzk4NDB9.9Og8C-JlEhY5NCM3dUEQFivK0aTFJGJgZ1zVLzdnaIzzjITcUxJFQ-s1GU4oaPyz
 
 runtime:
   variables:
     - name: baseUrl
-      value: "http://localhost:8080 "
+      value: http://localhost:8080
   scripts:
     - type: after-response
       code: "const json = res.getBody();\r

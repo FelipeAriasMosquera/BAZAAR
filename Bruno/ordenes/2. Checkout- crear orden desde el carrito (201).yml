@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/ordenes"
+  url: "{{baseUrl}}/api/ordenes"
   headers:
     - name: Content-Type
       value: application/json
@@ -17,7 +17,7 @@ http:
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNTU1MDU0LCJleHAiOjE3OTI2NDE0NTR9.CqB0Tybkb916WMFEnYSOuf_r80EgW_Go-EoPaDlrnUx0RYUPjqG3vpjyXTvWGKmw
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMTUzNDQwLCJleHAiOjE3OTMyMzk4NDB9.9Og8C-JlEhY5NCM3dUEQFivK0aTFJGJgZ1zVLzdnaIzzjITcUxJFQ-s1GU4oaPyz
 
 runtime:
   variables:
@@ -26,7 +26,7 @@ runtime:
     - name: usuarioId
       value: "4"
     - name: direccionId
-      value: "3"
+      value: "4"
   scripts:
     - type: after-response
       code: "if (res.getStatus() === 201) {\r

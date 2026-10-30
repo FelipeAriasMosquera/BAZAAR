@@ -11,20 +11,20 @@ http:
     data: |-
       {
 
-        "categoriaId": 3,
-        "nombre": "iPhone 8808",
-        "descripcion": ":3333333333333",
-        "tipoVenta": "subasta",
-        "precio": 9999,
-        "stock": 200,
+        "categoriaId": 8,
+        "nombre": "Aretes",
+        "descripcion": ":Cogantes de oro para orejas",
+        "tipoVenta": "fijo",
+        "precio": 800000,
+        "stock": 20,
         "imagenes": [
-          { "url": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRe0i9FQvH3bdRwC62L_bcnPzhHXB5jQUch8TAHtJPViPQLWVY705LgnKpDU8MKO37mn1uxz-08qOguXsk6nw0duambhTnPxLBCEdeNXpUzModr5Bsem9MeMQ", "orden": 0 },
-          { "url": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRTwYlbrN7ke7nMojB01INUt4vxaNUvZwROiwVtufSrDU5VyUsn9BrAK7TtrQCqGozCPxbhf0RPqk0UzZdlmzxOv26uiqg41GvS-lTyw9gtRt0v2SCa_i7c", "orden": 1 }
+          { "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQLSC2Hiu8QBkeq_sfYc-gdNMh0vdYVKiYYjIJrspthoYUoT511xNvvqnQ&s=10", "orden": 0 },
+          { "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-_9itfU9wufVDwf9Ls8CFHgMIQfTGKfxJVDytByvR8KYqDj2hElrkfvY&s=10", "orden": 1 }
         ]
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyMDE5MjI3LCJleHAiOjE3OTIxMDU2Mjd9.vHiRt0Rw5ZntMXQiE34MxLtYfC4zWYB7hLOowCtAAsqfh298oHh57X4z-lUkGvg9
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiVkVOREVET1IsQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzE3MzQxLCJleHAiOjE3OTI4MDM3NDF9.aYf6E1oGNpL_GPSfuBnb1pK2FJNmvhyaFhyUvydCUMJBCy1qrgrWguf79DLdDSg9
 
 runtime:
   variables:

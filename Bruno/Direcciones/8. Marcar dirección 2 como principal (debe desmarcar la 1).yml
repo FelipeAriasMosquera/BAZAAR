@@ -5,13 +5,13 @@ info:
 
 http:
   method: PATCH
-  url: "{{baseUrl}}/api/usuarios/{{usuarioId}}/direcciones/{{direccionId2}}/principal"
+  url: "{{baseUrl}}/api/direcciones/{{direccionId2}}/principal"
   auth: inherit
 
 runtime:
   variables:
     - name: baseUrl
-      value: "http://localhost:8080 "
+      value: http://localhost:8080
 
 settings:
   encodeUrl: true

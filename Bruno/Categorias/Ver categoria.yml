@@ -5,8 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/categorias/4"
-  auth: inherit
+  url: "{{baseUrl}}/api/categorias/9"
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiVkVOREVET1IsQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzE3MzQxLCJleHAiOjE3OTI4MDM3NDF9.aYf6E1oGNpL_GPSfuBnb1pK2FJNmvhyaFhyUvydCUMJBCy1qrgrWguf79DLdDSg9
 
 runtime:
   variables:
