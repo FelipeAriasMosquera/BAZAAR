@@ -17,7 +17,7 @@ http:
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMTUzNDQwLCJleHAiOjE3OTMyMzk4NDB9.9Og8C-JlEhY5NCM3dUEQFivK0aTFJGJgZ1zVLzdnaIzzjITcUxJFQ-s1GU4oaPyz
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tbSIsInJvbCI6IkNPTVBSQURPUiIsImlhdCI6MTc5MzMyMjQ1OSwiZXhwIjoxNzkzNDA4ODU5fQ.pPxMgi-bhPeZy0XtcJ6vWELZ9rwqXLYd9-OYbs7qf497btASpOtBCbkvmIMBUFao
 
 runtime:
   variables:
@@ -26,7 +26,7 @@ runtime:
     - name: usuarioId
       value: "4"
     - name: direccionId
-      value: "4"
+      value: "3"
   scripts:
     - type: after-response
       code: "if (res.getStatus() === 201) {\r

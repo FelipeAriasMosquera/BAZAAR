@@ -15,26 +15,19 @@ config:
       bypassProxy: ""
 
 request:
-  auth:
-    type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJBQGJhemFhci5jb21tIiwicm9sIjoiVkVOREVET1IsQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzE3MzQxLCJleHAiOjE3OTI4MDM3NDF9.aYf6E1oGNpL_GPSfuBnb1pK2FJNmvhyaFhyUvydCUMJBCy1qrgrWguf79DLdDSg9
   variables:
-    - name: ordenId
-      value:
-        type: number
-        data: "7"
-    - name: itemId
-      value:
-        type: number
-        data: "15"
     - name: direccionId
       value:
         type: number
         data: "3"
-    - name: direccionId2
+    - name: ordenId
       value:
         type: number
-        data: "4"
+        data: "5"
+    - name: itemId
+      value:
+        type: number
+        data: "6"
 bundled: false
 extensions:
   bruno:
