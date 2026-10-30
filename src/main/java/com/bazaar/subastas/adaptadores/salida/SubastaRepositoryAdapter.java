@@ -90,4 +90,9 @@ public class SubastaRepositoryAdapter implements SubastaRepositoryPort {
                 e.getFechaInicio(), e.getFechaFin(),
                 EstadoSubasta.valueOf(e.getEstado().toUpperCase()), e.getGanadorId());
     }
+
+    @Override
+    public boolean existePorProducto(Long productoId) {
+        return subastaJpa.existsByProductoId(productoId);
+    }
 }

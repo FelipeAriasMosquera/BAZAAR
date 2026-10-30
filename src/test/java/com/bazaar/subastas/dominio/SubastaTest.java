@@ -44,4 +44,20 @@ class SubastaTest {
         assertFalse(s.cerrar(OffsetDateTime.now().plusDays(2)));
         assertNull(s.getGanadorId());
     }
+
+    @Test
+    void crearRechazaFechaFinAnteriorAlInicio() {
+        OffsetDateTime ahora = OffsetDateTime.now();
+        assertThrows(SubastaInvalidaException.class, () -> Subasta.crear(1L, 2L,
+                new BigDecimal("1000"), new BigDecimal("100"), null,
+                ahora.plusHours(2), ahora.plusHours(1), ahora));
+    }
+
+    @Test
+    void crearRechazaReservaMenorAlPrecioInicial() {
+        OffsetDateTime ahora = OffsetDateTime.now();
+        assertThrows(SubastaInvalidaException.class, () -> Subasta.crear(1L, 2L,
+                new BigDecimal("1000"), new BigDecimal("100"), new BigDecimal("500"),
+                ahora.plusHours(1), ahora.plusHours(2), ahora));
+    }
 }

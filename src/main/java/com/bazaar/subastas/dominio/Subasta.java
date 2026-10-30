@@ -21,6 +21,29 @@ public class Subasta {
     private EstadoSubasta estado;
     private Long ganadorId;             // líder actual; al cerrar, solo si superó la reserva
 
+
+    public static Subasta crear(Long productoId, Long vendedorId, BigDecimal precioInicial,
+                                BigDecimal incrementoMinimo, BigDecimal precioReserva,
+                                OffsetDateTime fechaInicio, OffsetDateTime fechaFin, OffsetDateTime ahora) {
+        if (precioInicial.signum() <= 0) {
+            throw new SubastaInvalidaException("El precio inicial debe ser mayor a cero");
+        }
+        if (incrementoMinimo.signum() <= 0) {
+            throw new SubastaInvalidaException("El incremento mínimo debe ser mayor a cero");
+        }
+        if (precioReserva != null && precioReserva.compareTo(precioInicial) < 0) {
+            throw new SubastaInvalidaException("El precio de reserva no puede ser menor al precio inicial");
+        }
+        if (fechaInicio.isBefore(ahora.minusMinutes(1))) {   // 1 minuto de tolerancia por la latencia
+            throw new SubastaInvalidaException("La fecha de inicio no puede estar en el pasado");
+        }
+        if (!fechaFin.isAfter(fechaInicio)) {
+            throw new SubastaInvalidaException("La fecha de fin debe ser posterior a la de inicio");
+        }
+        return new Subasta(null, productoId, vendedorId, precioInicial, precioInicial,
+                incrementoMinimo, precioReserva, fechaInicio, fechaFin, EstadoSubasta.PROGRAMADA, null);
+    }
+
     public Puja registrarPuja(Long usuarioId, BigDecimal monto, OffsetDateTime ahora) {
         if (estado != EstadoSubasta.ACTIVA) {
             throw new PujaInvalidaException("La subasta no está activa");

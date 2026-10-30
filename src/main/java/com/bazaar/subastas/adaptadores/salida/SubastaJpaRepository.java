@@ -19,6 +19,7 @@ public interface SubastaJpaRepository extends JpaRepository<SubastaEntity, Long>
     List<SubastaEntity> findByEstado(String estado);
     List<SubastaEntity> findByEstadoAndFechaInicioLessThanEqual(String estado, OffsetDateTime ahora);
     List<SubastaEntity> findByEstadoAndFechaFinLessThanEqual(String estado, OffsetDateTime ahora);
+    boolean existsByProductoId(Long productoId);
 
     // Solo leemos la columna vendedor_id para no acoplarnos a la entidad del catálogo
     @Query(value = "select vendedor_id from productos where id = :productoId", nativeQuery = true)
