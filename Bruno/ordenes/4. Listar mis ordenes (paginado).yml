@@ -13,7 +13,9 @@ http:
     - name: size
       value: "10"
       type: query
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJQZXBlQGJhemFhci5jb21tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkyNzIxNDAzLCJleHAiOjE3OTI4MDc4MDN9.zyBhLqpx2rT0x4r4KlWGZ5PbHdUKAdEv4liMFEPSwisnvGna-jc485guJnwGlzgv
 
 runtime:
   variables:

@@ -1,0 +1,26 @@
+info:
+  name: 7. Editar mi reseña
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/resenas/{{resenaId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "calificacion": 4,
+        "comentario": "Bueno, pero el empaque venía golpeado."
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
