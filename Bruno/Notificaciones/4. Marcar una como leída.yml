@@ -1,0 +1,16 @@
+info:
+  name: 4. Marcar una como leída
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/api/notificaciones/{{notificacionId}}/leida"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

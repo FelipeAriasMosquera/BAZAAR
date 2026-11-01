@@ -14,18 +14,18 @@ http:
     data: |-
       {
         "productoId": {{productoId}},
-        "cantidad": 2
+        "cantidad": 1
       }
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tIiwicm9sIjoiQ09NUFJBRE9SIiwiaWF0IjoxNzkzMTUzNDQwLCJleHAiOjE3OTMyMzk4NDB9.9Og8C-JlEhY5NCM3dUEQFivK0aTFJGJgZ1zVLzdnaIzzjITcUxJFQ-s1GU4oaPyz
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJGZWxpcGlob0BiYXphYXIuY29tbSIsInJvbCI6IkNPTVBSQURPUiIsImlhdCI6MTc5MzMyMjQ1OSwiZXhwIjoxNzkzNDA4ODU5fQ.pPxMgi-bhPeZy0XtcJ6vWELZ9rwqXLYd9-OYbs7qf497btASpOtBCbkvmIMBUFao
 
 runtime:
   variables:
     - name: baseUrl
       value: http://localhost:8080
     - name: productoId
-      value: "13"
+      value: "2"
   scripts:
     - type: after-response
       code: "const json = res.getBody();\r

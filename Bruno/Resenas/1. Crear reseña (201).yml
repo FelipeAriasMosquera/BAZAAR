@@ -1,0 +1,35 @@
+info:
+  name: 1. Crear reseña (201)
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/productos/{{productoId}}/resenas"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "calificacion": 5,
+        "comentario": "Excelente producto, llegó rápido."
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "if (res.getStatus() === 201) {\r
+
+        \    bru.setCollectionVar('resenaId', res.getBody().id);\r
+
+        }"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

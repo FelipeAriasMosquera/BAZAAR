@@ -27,6 +27,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.List;
 import java.util.Objects;
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -252,5 +254,11 @@ public class OrdenService {
         String email = auth.getName();
         return usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario autenticado no encontrado: " + email));
+    }
+
+    /** Lo usa Reseñas: ¿el usuario ya compró y pagó este producto? */
+    public boolean usuarioCompro(Long usuarioId, Long productoId) {
+        return ordenRepository.existeCompra(usuarioId, productoId,
+                List.of(EstadoOrden.PAGADA, EstadoOrden.ENVIADA, EstadoOrden.ENTREGADA));
     }
 }
