@@ -3,6 +3,8 @@ package com.bazaar.usuarios.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +22,9 @@ public class Usuario {
     @Column(nullable = false, length = 120)
     private String nombre;
 
+    @Column(length = 80)
+    private String apellido;
+
     @Column(nullable = false, unique = true, length = 180)
     private String email;
 
@@ -28,6 +33,15 @@ public class Usuario {
 
     @Column(length = 30)
     private String telefono;
+
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
+
+    @Column(length = 2)
+    private String pais;
+
+    @Column(length = 5)
+    private String idioma;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "usuario_id"))
