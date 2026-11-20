@@ -79,7 +79,11 @@ public class UsuarioService {
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
 
         usuario.setNombre(request.nombre());
+        usuario.setApellido(request.apellido());
         usuario.setTelefono(request.telefono());
+        usuario.setFechaNacimiento(request.fechaNacimiento());
+        usuario.setPais(request.pais());
+        usuario.setIdioma(request.idioma());
 
         usuario = usuarioRepository.save(usuario);
         return aResponse(usuario);
@@ -140,7 +144,7 @@ public class UsuarioService {
     }
 
     private UsuarioResponse aResponse(Usuario u) {
-        return new UsuarioResponse(u.getId(), u.getNombre(), u.getEmail(), u.getTelefono(), u.getRoles());
+        return new UsuarioResponse(u.getId(), u.getNombre(), u.getApellido(), u.getEmail(), u.getTelefono(), u.getFechaNacimiento(), u.getPais(), u.getIdioma(), u.getRoles(), u.getFechaRegistro());
     }
 
 
